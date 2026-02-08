@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/registry"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/registry"
 )
 
 func TestCleaner_SkipsWhenDisabled(t *testing.T) {

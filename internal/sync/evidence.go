@@ -6,9 +6,9 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/flexibee"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/registry"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/store"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/flexibee"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/registry"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/store"
 )
 
 // syncEvidence performs a single sync pass for one evidence type.

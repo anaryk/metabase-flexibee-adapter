@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/flexibee"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/registry"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/store"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/flexibee"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/registry"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/store"
 )
 
 var discardLogger = slog.New(slog.DiscardHandler)

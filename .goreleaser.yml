@@ -23,35 +23,35 @@ archives:
 
 dockers:
   - image_templates:
-      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}-amd64"
+      - "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}-amd64"
     use: buildx
     dockerfile: Dockerfile.goreleaser
     build_flag_templates:
       - "--platform=linux/amd64"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
       - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.source=https://github.com/tomasmarek/metabase-flexibee-adapter"
+      - "--label=org.opencontainers.image.source=https://github.com/anaryk/metabase-flexibee-adapter"
     goarch: amd64
   - image_templates:
-      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}-arm64"
+      - "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}-arm64"
     use: buildx
     dockerfile: Dockerfile.goreleaser
     build_flag_templates:
       - "--platform=linux/arm64"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
       - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.source=https://github.com/tomasmarek/metabase-flexibee-adapter"
+      - "--label=org.opencontainers.image.source=https://github.com/anaryk/metabase-flexibee-adapter"
     goarch: arm64
 
 docker_manifests:
-  - name_template: "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}"
+  - name_template: "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}"
     image_templates:
-      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}-amd64"
-      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}-arm64"
-  - name_template: "ghcr.io/tomasmarek/metabase-flexibee-adapter:latest"
+      - "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}-amd64"
+      - "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}-arm64"
+  - name_template: "ghcr.io/anaryk/metabase-flexibee-adapter:latest"
     image_templates:
-      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}-amd64"
-      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Version }}-arm64"
+      - "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}-amd64"
+      - "ghcr.io/anaryk/metabase-flexibee-adapter:{{ .Version }}-arm64"
 
 checksum:
   name_template: "checksums.txt"

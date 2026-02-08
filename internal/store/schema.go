@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/flexibee"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/flexibee"
 )
 
 // FlexibeeTypeToPG maps a Flexibee property type to a PostgreSQL column type.

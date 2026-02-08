@@ -7,11 +7,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/config"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/flexibee"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/registry"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/store"
-	adaptersync "github.com/tomasmarek/metabase-flexibee-adapter/internal/sync"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/config"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/flexibee"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/registry"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/store"
+	adaptersync "github.com/anaryk/metabase-flexibee-adapter/internal/sync"
 )
 
 func main() {

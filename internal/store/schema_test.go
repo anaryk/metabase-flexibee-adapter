@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/flexibee"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/flexibee"
 )
 
 func TestFlexibeeTypeToPG(t *testing.T) {

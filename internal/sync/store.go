@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/store"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/store"
 )
 
 // SyncStore defines the store operations needed by the sync engine.

@@ -7,9 +7,9 @@ import (
 
 	"golang.org/x/sync/errgroup"
 
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/flexibee"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/registry"
-	"github.com/tomasmarek/metabase-flexibee-adapter/internal/store"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/flexibee"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/registry"
+	"github.com/anaryk/metabase-flexibee-adapter/internal/store"
 )
 
 // Engine orchestrates syncing Flexibee data to PostgreSQL.
