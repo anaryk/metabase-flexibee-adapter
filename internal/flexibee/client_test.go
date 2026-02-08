@@ -168,5 +168,5 @@ func TestFetchEvidenceProperties(t *testing.T) {
 	assert.Equal(t, "id", props[0].Name)
 	assert.Equal(t, "integer", props[0].Type)
 	assert.Equal(t, "kod", props[1].Name)
-	assert.Equal(t, 20, props[1].MaxLength)
+	assert.Equal(t, FlexibeeInt(20), props[1].MaxLength)
 }

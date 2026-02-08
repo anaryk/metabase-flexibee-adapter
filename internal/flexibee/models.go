@@ -18,13 +18,52 @@ type ResponseEnvelope struct {
 	Records  []map[string]any
 }
 
+// FlexibeeBool handles Flexibee's habit of returning booleans as strings ("true"/"false").
+type FlexibeeBool bool
+
+func (b *FlexibeeBool) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err == nil {
+		*b = FlexibeeBool(s == "true")
+		return nil
+	}
+	var v bool
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	*b = FlexibeeBool(v)
+	return nil
+}
+
+// FlexibeeInt handles Flexibee returning integers as strings (e.g. "20").
+type FlexibeeInt int
+
+func (i *FlexibeeInt) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err == nil {
+		n, err := strconv.Atoi(s)
+		if err != nil {
+			*i = 0
+			return nil
+		}
+		*i = FlexibeeInt(n)
+		return nil
+	}
+	var v int
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	*i = FlexibeeInt(v)
+	return nil
+}
+
 // Property describes a single field in a Flexibee evidence type.
 type Property struct {
-	Name      string `json:"propertyName"`
-	Type      string `json:"type"`
-	MaxLength int    `json:"maxLength"`
-	Mandatory bool   `json:"mandatory"`
-	ReadOnly  bool   `json:"isReadOnly"`
+	Name      string       `json:"propertyName"`
+	Type      string       `json:"type"`
+	MaxLength FlexibeeInt  `json:"maxLength"`
+	Mandatory FlexibeeBool `json:"mandatory"`
+	ReadOnly  FlexibeeBool `json:"isReadOnly"`
 }
 
 // EvidenceInfo describes an available evidence type.
