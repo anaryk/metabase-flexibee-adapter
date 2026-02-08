@@ -14,6 +14,47 @@ docker compose up
 
 This starts PostgreSQL, the adapter (syncing from Flexibee demo), and Metabase at [http://localhost:3000](http://localhost:3000).
 
+## Docker Compose
+
+The included `docker-compose.yml` runs the full stack:
+
+| Service | Description | Port |
+|---|---|---|
+| `postgres` | PostgreSQL 17 database | `5432` |
+| `adapter` | Flexibee sync daemon | - |
+| `metabase` | Metabase analytics UI | `3000` |
+
+### Production usage
+
+Copy `docker-compose.yml` and override the environment variables for your Flexibee instance:
+
+```bash
+FLEXIBEE_URL=https://your-flexibee.example.com \
+FLEXIBEE_COMPANY=your_company \
+FLEXIBEE_USERNAME=your_user \
+FLEXIBEE_PASSWORD=your_password \
+docker compose up -d
+```
+
+### Useful commands
+
+```bash
+# Start all services in background
+docker compose up -d
+
+# View adapter logs
+docker compose logs -f adapter
+
+# Restart only the adapter (e.g. after config change)
+docker compose restart adapter
+
+# Stop everything
+docker compose down
+
+# Stop and remove data (fresh start)
+docker compose down -v
+```
+
 ## Configuration
 
 All settings can be configured via environment variables or CLI flags. Flags take priority over env vars.

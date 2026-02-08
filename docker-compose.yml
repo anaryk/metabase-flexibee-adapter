@@ -9,11 +9,17 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flexibee"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   adapter:
     build: .
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       FLEXIBEE_URL: https://demo.flexibee.eu
       FLEXIBEE_COMPANY: demo
@@ -23,13 +29,16 @@ services:
       SYNC_INTERVAL: 5m
       RETENTION_DAYS: "365"
       CLEANUP_INTERVAL: 24h
+      LOG_LEVEL: info
+    restart: unless-stopped
 
   metabase:
     image: metabase/metabase:latest
     ports:
       - "3000:3000"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
       MB_DB_TYPE: postgres
       MB_DB_HOST: postgres
@@ -37,6 +46,7 @@ services:
       MB_DB_DBNAME: flexibee
       MB_DB_USER: flexibee
       MB_DB_PASS: flexibee
+    restart: unless-stopped
 
 volumes:
   pgdata:
