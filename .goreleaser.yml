@@ -1,0 +1,34 @@
+version: 2
+
+builds:
+  - main: ./cmd/adapter
+    binary: adapter
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+
+archives:
+  - format: tar.gz
+
+dockers:
+  - image_templates:
+      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:{{ .Tag }}"
+      - "ghcr.io/tomasmarek/metabase-flexibee-adapter:latest"
+    dockerfile: Dockerfile.goreleaser
+    build_flag_templates:
+      - "--platform=linux/amd64"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^ci:"

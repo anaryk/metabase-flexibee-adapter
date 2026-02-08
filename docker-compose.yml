@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: flexibee
+      POSTGRES_USER: flexibee
+      POSTGRES_PASSWORD: flexibee
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  adapter:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      FLEXIBEE_URL: https://demo.flexibee.eu
+      FLEXIBEE_COMPANY: demo
+      FLEXIBEE_USERNAME: winstrom
+      FLEXIBEE_PASSWORD: winstrom
+      DATABASE_URL: postgres://flexibee:flexibee@postgres:5432/flexibee?sslmode=disable
+      SYNC_INTERVAL: 5m
+      RETENTION_DAYS: "365"
+      CLEANUP_INTERVAL: 24h
+
+  metabase:
+    image: metabase/metabase:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_HOST: postgres
+      MB_DB_PORT: "5432"
+      MB_DB_DBNAME: flexibee
+      MB_DB_USER: flexibee
+      MB_DB_PASS: flexibee
+
+volumes:
+  pgdata:
